@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flack Room</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
+      integrity="sha256-bQmrZe4yPnQrLTY+1gYylfNMBuGfnT/HKsCGX+9Xuqo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var user = JSON.parse('{{ user|safe }}');
+    </script>
+    <script src="{{ url_for('static', filename='/JS/main.js') }}"></script>
+  </head>
+  <body>
+    {% extends "base.html" %} {% block content %}
+    <div class="chat-container container">
+      <header
+        class="chat-header d-flex justify-content-center align-items-center"
+      >
+        <h1><i class="fas fa-smile"></i>FLACK ROOM</h1>
+        <a href="/" id="btnLeave" class="btn btn-default">Leave Room</a>
+      </header>
+      <main class="chat-main row">
+        <div class="chat-sidebar col-md-2 d-flex flex-column">
+          <h3><i class="fas fa-comments"></i> Room Name:</h3>
+          <h2 id="room-name"></h2>
+          <h3><i class="fas fa-users"></i> Users:</h3>
+          <ul id="users"></ul>
+        </div>
+        <div class="chat-messages col-md-8"></div>
+      </main>
+      <div class="chat-form-container container">
+        <form id="chat-form">
+          <input
+            id="msg"
+            type="text"
+            placeholder="Enter Message"
+            required
+            autocomplete="off"
+          />
+          <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+        </form>
+      </div>
+    </div>
+    {% endblock %}
+  </body>
+</html>

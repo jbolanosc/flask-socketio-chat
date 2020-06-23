@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FLACK</title>
+  </head>
+  <body>
+    {% extends "base.html" %} {% block content %}
+    <div class="container">
+      <div class="fill d-flex justify-content-center align-items-center">
+        <div>
+          <div class="container text-center">
+            <h3>Welcome <span id="user-span">{{user}}</span></h3>
+            <div class="d-flex justify-content-center align-items-center">
+              <form id="createChannelForm" class="m-1" method="POST" action="/chat">
+                <h5>Create Channel</h5>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="newChannel"
+                    aria-describedby="newChannel"
+                    placeholder="Channel name"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="submit"
+                    class="form-control"
+                    id="CreateChannel"
+                    aria-describedby="enterButton"
+                    value="Create and Join"
+                  />
+                </div>
+              </form>
+              <form id="joinChannelForm" class="m-1" method="POST" action="/chat">
+                <h5>Join Channel</h5>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span
+                      class="input-group-text"
+                      id="inputGroup-sizing-default"
+                      >Channels</span
+                    >
+                  </div>
+                  <select class="form-control" name="channel">
+                    {% for item in items %}
+                    <option name="channel" value="{{ item["id"] }}">{{ item["description"]}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input
+                    type="submit"
+                    class="form-control"
+                    id="JoinChannel"
+                    aria-describedby="enterButton"
+                    value="Join Channel"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
+    integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
+    crossorigin="anonymous"
+  ></script>
+  <script src="/socket.io/socket.io.js"></script>
+  </body>
+</html>
