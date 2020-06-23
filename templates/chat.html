@@ -16,7 +16,7 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      var user = JSON.parse('{{ user|safe }}');
+      var user = JSON.parse("{{ user|safe }}");
     </script>
     <script src="{{ url_for('static', filename='/JS/main.js') }}"></script>
   </head>
@@ -38,7 +38,7 @@
         </div>
         <div class="chat-messages col-md-8"></div>
       </main>
-      <div class="chat-form-container container">
+      <div class="chat-form-container">
         <form id="chat-form">
           <input
             id="msg"

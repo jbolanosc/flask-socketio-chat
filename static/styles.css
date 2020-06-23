@@ -14,6 +14,10 @@
   padding: 0;
 }
 
+html {
+  font-size: 2vw;
+}
+
 body {
   font-family: "Krona One", sans-serif;
   font-size: 16px;
@@ -26,6 +30,22 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.7em;
+}
+
+h3 {
+  font-size: 1.4em;
+}
+
+h5 {
+  font-size: 1.2em;
 }
 
 /* Chat Page styles */
@@ -86,9 +106,15 @@ a {
 }
 
 /* Media queries */
+@media screen and (min-width: 50em) {
+  html {
+    font-size: 2vw;
+  }
+}
+
 @media (max-width: 700px) {
   .chat-main {
-    display: block;
+    height: 20vh;
   }
 
   .chat-sidebar {
